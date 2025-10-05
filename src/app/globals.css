@@ -6,10 +6,10 @@
   --foreground: #ffffff;
   --writing: #444444;
   --gradient: linear-gradient(
-    135deg,
+    145deg,
     #ffedf0 0%,
-    #f4a6b4 30%,
-    #e68ca0 65%,
+    #f4a6b4 20%,
+    #e68ca0 80%,
     #c94f7c 100%
   );
 }
