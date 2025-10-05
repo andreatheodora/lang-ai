@@ -21,10 +21,26 @@ export default function Home() {
   const levelRef = useRef(null);
 
   const handleSubmit = async (input) => {
+    addMessage(input, "user");
+
+    const newInput = [
+      {
+        role: "user",
+        parts: [{ text: input }],
+      },
+    ];
+
+    const history = messages.map((msg) => ({
+      role: msg.sender,
+      parts: [{ text: msg.text }],
+    }));
+
+    const newHistory = history.concat(newInput);
+    console.log(newHistory);
+
     try {
-      addMessage(input, "user");
-      const res = await chat(input, language, level, vocabulary, grammars);
-      addMessage(res, "tutor");
+      const res = await chat(newHistory, language, level, vocabulary, grammars);
+      addMessage(res, "model");
     } catch (err) {
       console.error("Error: ", err);
     }
@@ -35,7 +51,6 @@ export default function Home() {
       id: crypto.randomUUID(),
       text: messageText,
       sender: sender,
-      timestamp: Date.now(),
     };
 
     setMessages((prev) => [...prev, newMessage]);
@@ -63,7 +78,7 @@ export default function Home() {
   }, [language]);
   return (
     <>
-      <div className="h-[100dvh] md:w-5xl mx-auto px-4 sm:px-16 py-4 sm:py-8 flex flex-col justify-between">
+      <div className="font-sans h-[100dvh] md:w-5xl mx-auto px-4 sm:px-16 py-4 sm:py-8 flex flex-col justify-between">
         <div className="relative shrink-0 flex flex-row justify-between items-center pb-4">
           <div className="flex flex-row items-center gap-2">
             <button
@@ -97,10 +112,10 @@ export default function Home() {
             {showLevelModal && (
               <div
                 ref={levelRef}
-                className="text-background absolute w-[400px] left-10 top-10 z-50 px-6 py-4 bg-white w-auto rounded-xl text-center flex flex-col justify-center"
+                className="bg-foreground text-[var(--writing)] absolute w-[400px] left-10 top-10 z-50 px-6 py-4 bg-white w-auto rounded-xl text-center flex flex-col justify-center"
               >
                 <h2 className="text-center text-[18px]">Select your level</h2>
-                <div className="flex flex-col mt-2 gap-4 rounded-lg">
+                <div className="flex flex-col mt-2 gap-3 rounded-lg">
                   <div className="flex flex-row items-center gap-3">
                     <button
                       onClick={() => {
@@ -183,7 +198,7 @@ export default function Home() {
             {showModal && (
               <div
                 ref={languageRef}
-                className="text-background absolute w-[400px] left-0 top-10 z-50 px-6 py-4 bg-white w-auto rounded-xl text-center flex flex-col justify-center"
+                className="bg-foreground text-[var(--writing)] absolute w-[400px] left-0 top-10 z-50 px-6 py-4 w-auto rounded-xl text-center flex flex-col justify-center"
               >
                 <h2 className="text-center text-[18px]">Choose a language</h2>
                 <div className="flex flex-col mt-2 gap-4 rounded-lg">

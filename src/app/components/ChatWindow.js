@@ -11,8 +11,11 @@ export default function ChatWindow({ messages }) {
     <div className="text-background w-full grow flex flex-col overflow-y-hidden">
       <div className="sm:text-lg grow flex flex-col gap-4 py-4 overflow-y-scroll">
         {messages.map((msg) =>
-          msg.sender == "tutor" ? (
-            <div key={msg.id} className="text-[var(--writing)] tutor">
+          msg.sender == "model" ? (
+            <div
+              key={msg.id}
+              className="text-[var(--writing)] text-align-left model"
+            >
               <ReactMarkdown>{msg.text}</ReactMarkdown>
             </div>
           ) : (
