@@ -2,7 +2,16 @@
 
 :root {
   --background: #ffedf0;
-  --foreground: #171717;
+  --accent: #ff1998;
+  --foreground: #ffffff;
+  --writing: #444444;
+  --gradient: linear-gradient(
+    135deg,
+    #ffedf0 0%,
+    #f4a6b4 30%,
+    #e68ca0 65%,
+    #c94f7c 100%
+  );
 }
 
 @theme inline {
@@ -14,8 +23,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #152728;
+    --foreground: #e6ebe0;
+    --accent: #2e4f50;
+    --writing: #e6ebe0;
+    --gradient: linear-gradient(
+      330deg,
+      #152728 0%,
+      #1f3c3d 30%,
+      #2e5a5c 65%,
+      #4fa3a6 100%
+    );
   }
 }
 
@@ -31,13 +49,14 @@ h1 {
 }
 
 .user {
-  background-color: #ffffff;
-  text-align: right;
+  background-image: var(--gradient);
+  color: white;
+  text-align: start;
   align-self: flex-end;
   max-width: 500px;
   width: auto;
   border-radius: 16px 16px 0 16px;
-  padding: 10px 20px;
+  padding: 5px 15px;
 }
 
 .tutor {
@@ -48,6 +67,7 @@ h1 {
   .user {
     max-width: 100%;
     width: auto;
+    padding: 5px 15px;
   }
 }
 

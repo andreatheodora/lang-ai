@@ -1,9 +1,6 @@
 import { BASE_URL } from "@/app/constants";
 export async function chat(input, language, level, words = [], grammars = []) {
-  const url = `${BASE_URL}`;
-
-  console.log("fetching... ", url);
-
+  const url = BASE_URL;
   try {
     const response = await fetch(url, {
       method: "POST",
