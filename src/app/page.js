@@ -31,6 +31,7 @@ export default function Home() {
   };
 
   const addMessage = useCallback((messageText, sender) => {
+    console.log("adding message");
     const newMessage = {
       id: crypto.randomUUID(),
       text: messageText,
