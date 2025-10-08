@@ -126,7 +126,10 @@ export default function Home() {
             {showLevelModal && (
               <div
                 ref={levelRef}
-                className="bg-foreground text-[var(--writing)] absolute w-auto left-10 top-10 z-30 px-4 py-3 sm:px-6 sm:py-4 bg-white rounded-xl text-center flex flex-col"
+                className="bg-foreground text-[var(--writing)] border-[#ebebeb] absolute w-auto left-10 top-10 z-30 px-4 py-3 sm:px-6 sm:py-4 bg-white rounded-xl text-center flex flex-col"
+                style={{
+                  boxShadow: "0 4px 24px 0 rgba(255,255,255,0.5)",
+                }}
               >
                 <h2 className="text-center text-sm hidden sm:block">
                   Select your level
@@ -197,18 +200,6 @@ export default function Home() {
                     </button>
                     <label className="sm:block hidden">Advanced</label>
                   </div>
-                  <div className="flex flex-row sm:justify-center items-center gap-3">
-                    <button
-                      onClick={() => {
-                        setShowLevelModal(false);
-                        setLevel("C2");
-                      }}
-                      className="relative w-8 h-8 sm:w-8 sm:h-8 rounded-full shadow-md overflow-hidden flex items-center justify-center"
-                    >
-                      C2
-                    </button>
-                    <label className="sm:block hidden">Mastery</label>
-                  </div>
                 </div>
               </div>
             )}
@@ -216,7 +207,10 @@ export default function Home() {
             {showModal && (
               <div
                 ref={languageRef}
-                className="bg-foreground text-[var(--writing)] absolute sm:w-auto left-0 top-10 z-30 px-4 py-4 sm:px-6 sm:py-4 bg-white rounded-xl text-center flex flex-col justify-center"
+                className="bg-foreground text-[var(--writing)] border border-[#ebebeb] border-rounded absolute sm:w-auto left-0 top-10 z-30 px-4 py-4 sm:px-6 sm:py-4 bg-white rounded-xl text-center flex flex-col justify-center"
+                style={{
+                  boxShadow: "0 4px 24px 0 rgba(255,255,255,0.5)",
+                }}
               >
                 <h2 className="text-center text-sm hidden mb-2 sm:block">
                   Select language
@@ -296,6 +290,25 @@ export default function Home() {
                       />
                     </button>
                     <label className="sm:block hidden">日本語</label>
+                  </div>
+
+                  <div className="flex flex-row items-center sm:justify-start justify-center gap-3">
+                    <button
+                      onClick={() => {
+                        setShowModal(false);
+                        setLanguage("English");
+                      }}
+                      className="relative w-8 h-8 sm:w-8 sm:h-8 rounded-full shadow-md overflow-hidden flex items-center"
+                    >
+                      <Image
+                        className="border-white"
+                        src="/english.png"
+                        fill={true}
+                        sizes={16}
+                        alt="language"
+                      />
+                    </button>
+                    <label className="sm:block hidden">English</label>
                   </div>
                 </div>
               </div>
