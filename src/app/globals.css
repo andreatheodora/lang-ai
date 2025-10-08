@@ -2,9 +2,10 @@
 
 :root {
   --background: #ffedf0;
-  --accent: #ff1998;
+  --accent: #f4acb7;
   --foreground: #ffffff;
   --writing: #444444;
+  --tutor-text: #444444;
   --gradient: linear-gradient(
     145deg,
     #ffedf0 0%,
@@ -26,7 +27,8 @@
     --background: #152728;
     --foreground: #e6ebe0;
     --accent: #2e4f50;
-    --writing: #e6ebe0;
+    --writing: #444444;
+    --tutor-text: #e6ebe0;
     --gradient: linear-gradient(
       330deg,
       #152728 0%,

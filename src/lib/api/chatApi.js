@@ -1,8 +1,6 @@
 import { BASE_URL } from "@/app/constants";
 export async function chat(input, language, level, words = [], grammars = []) {
-  console.log("input:");
-  console.log(input);
-  const url = BASE_URL;
+  const url = `${BASE_URL}/api`;
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -18,7 +16,6 @@ export async function chat(input, language, level, words = [], grammars = []) {
       }),
     });
     const data = await response.json();
-    console.log(data);
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -27,7 +24,8 @@ export async function chat(input, language, level, words = [], grammars = []) {
       );
     }
 
-    return data.message;
+    console.log(data);
+    return data;
   } catch (err) {
     console.error("Error calling API: ", err.message);
     throw err;

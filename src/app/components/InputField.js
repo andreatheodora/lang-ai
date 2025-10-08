@@ -76,14 +76,13 @@ export default function InputField({ language, onSubmit }) {
       <textarea
         ref={inputRef}
         onKeyDown={handleKeyDown}
-        className="w-full focus:outline-none overflow-y-auto max-h-32 resize-none"
+        className="w-full focus:outline-none overflow-y-auto text-[var(--writing)] placeholder:text-[var(--accent)] max-h-32 resize-none"
         rows={1}
         placeholder={currentPlaceholder}
         style={{
           padding: "10px",
           fontSize: "16px",
           transition: "all 0.5s ease",
-          color: "var(--accent)",
         }}
         value={input}
         onChange={(e) => {
@@ -96,7 +95,7 @@ export default function InputField({ language, onSubmit }) {
           setInput("");
         }}
       >
-        <FiArrowRight size={20} className="text-background" />
+        <FiArrowRight size={20} className="text-[var(--accent)]" />
       </button>
     </div>
   );
