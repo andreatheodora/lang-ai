@@ -7,12 +7,12 @@ import InputField from "./components/InputField";
 import Image from "next/image";
 
 export default function Home() {
-  const [language, setLanguage] = useState("German");
+  const [language, setLanguage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [level, setLevel] = useState("A1");
+  const [level, setLevel] = useState("");
   const [vocabulary, setVocabulary] = useState([]);
   const [grammars, setGrammars] = useState([]);
-  const [imageSrc, setImageSrc] = useState(`/${language.toLowerCase()}.png`);
+  const [imageSrc, setImageSrc] = useState("/german.png");
 
   const [showModal, setShowModal] = useState(false);
   const [showLevelModal, setShowLevelModal] = useState(false);
@@ -75,11 +75,24 @@ export default function Home() {
   }, [setShowModal, setShowLevelModal]);
 
   useEffect(() => {
-    setImageSrc(`/${language.toLowerCase()}.png`);
+    console.log(`language changed to ${language}`);
+    if (language) {
+      setImageSrc(`/${language.toLowerCase()}.png`);
+      localStorage.setItem("language", language);
+
+      const lvl = localStorage.getItem(`${language}_level`);
+
+      if (lvl) {
+        setLevel(lvl);
+      }
+    }
     setMessages([]);
   }, [language]);
 
   useEffect(() => {
+    const lang = localStorage.getItem("language");
+    setLanguage(lang || "German");
+    /*
     const words = ["전통적이다", "지지율", "무기력하다"];
     localStorage.setItem("WORDS_KR", JSON.stringify(words));
 
@@ -87,8 +100,12 @@ export default function Home() {
       const wordsString = localStorage.getItem("WORDS_KR");
       setVocabulary(JSON.parse(wordsString));
     } else if (language == "German") {
-    }
+    }*/
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(`${language}_level`, level);
+  }, [level]);
 
   return (
     <>

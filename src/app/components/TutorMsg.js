@@ -8,8 +8,6 @@ import {
   IoIosAdd,
 } from "react-icons/io";
 
-import Tooltip from "./Tooltip";
-
 export default function TutorMsg({ text }) {
   const [showTranslation, setShowTranslation] = useState(false);
   const [romanizationArr, setRomanizationArr] = useState(null);
