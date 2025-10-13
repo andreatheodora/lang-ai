@@ -18,7 +18,7 @@ export async function chat(input, language, level, words = [], grammars = []) {
     const data = await response.json();
 
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = data;
       throw new Error(
         errorData.message || `Failed to chat with status: ${response.status}`
       );
@@ -48,13 +48,15 @@ export async function vocab(input, language, level, deck) {
         deck: deck,
       }),
     });
-
+    const data = await response.json();
+    console.log(data);
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = data;
       throw new Error(
         errorData.message || `Failed to chat with status: ${response.status}`
       );
     }
+    return data;
   } catch (err) {
     console.error("Error calling API: ", err.message);
     throw err;
